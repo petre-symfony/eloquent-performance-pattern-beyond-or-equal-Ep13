@@ -13,14 +13,12 @@ use App\Models\Customer;
 
 class CustomersController extends Controller {
     public function index() {
-        Auth::login(User::where('name', 'Sarah Seller')->first());
+        Auth::login(User::where('name', 'Ted Bossman')->first());
 
         $customers = Customer::with('salesRep')
+            ->visibleTo(Auth::user())
             ->orderBy('name')
-            ->get()
-            ->filter(function ($customer){
-                return Auth::user()->can('view', $customer);
-            });
+            ->paginate();
 
         return view('customers.index', ['customers' => $customers]);
     }

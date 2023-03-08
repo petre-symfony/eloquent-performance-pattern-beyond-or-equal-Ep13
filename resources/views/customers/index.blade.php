@@ -65,7 +65,7 @@
                         @endforeach
                         </tbody>
                     </table>
-                    {{-- $customers->links() --}}
+                    {{ $customers->links() }}
                 </div>
             </div>
         </div>

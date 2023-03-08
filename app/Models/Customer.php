@@ -11,4 +11,11 @@ class Customer extends Model {
     public function salesRep(){
         return $this->belongsTo(User::class);
     }
+
+    public function scopeVisibleTo($query, User $user){
+        if ($user->is_owner) {
+            return;
+        }
+        $query->where('sales_rep_id', $user->id);
+    }
 }
