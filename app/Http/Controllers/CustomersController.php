@@ -13,6 +13,8 @@ use App\Models\Customer;
 
 class CustomersController extends Controller {
     public function index() {
+        Auth::login(User::where('name', 'Sarah Seller')->first());
+
         $customers = Customer::with('salesRep')
             ->orderBy('name')
             ->paginate();

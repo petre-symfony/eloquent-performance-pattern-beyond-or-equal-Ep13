@@ -41,6 +41,7 @@
                         </thead>
                         <tbody>
                         @foreach ($customers as $customer)
+                            @can('view', $customer)
                             <tr class="bg-white">
                                 <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 font-medium text-gray-900">
                                     {{ $customer->name }}
@@ -62,6 +63,7 @@
                                     <a href="#" class="text-indigo-600 hover:text-indigo-900 focus:outline-none focus:underline">Edit</a>
                                 </td>
                             </tr>
+                            @endcan
                         @endforeach
                         </tbody>
                     </table>
