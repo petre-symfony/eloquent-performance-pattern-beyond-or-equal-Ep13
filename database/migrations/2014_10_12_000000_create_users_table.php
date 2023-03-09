@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->string('password');
             $table->rememberToken();
             $table->boolean('is_owner')->default(false);
-            $table->index(['last_name', 'first_name']);
+            $table->index(['first_name', 'last_name']);
             $table->timestamps();
         });
     }
