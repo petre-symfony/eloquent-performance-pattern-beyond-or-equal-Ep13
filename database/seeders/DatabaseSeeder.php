@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder {
      * Seed the application's database.
      */
     public function run(): void {
+        /** Ep 13
         User::factory()->create(['name' => 'Ted Bossman', 'is_owner' => true]);
         User::factory()->create(['name' => 'Sarah Seller']);
         User::factory()->create(['name' => 'Chase Indeals']);
@@ -22,5 +23,8 @@ class DatabaseSeeder extends Seeder {
                 'sales_rep_id' => $user->id
             ])
         );
+         */
+
+        User::factory(100000)->create();
     }
 }

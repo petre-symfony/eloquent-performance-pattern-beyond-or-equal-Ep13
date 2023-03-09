@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/** Ep13
 Route::get('/', [CustomersController::class, 'index']);
+ */
+
+Route::get('/', [UsersController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
