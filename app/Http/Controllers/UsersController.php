@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Company;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,9 +19,12 @@ class UsersController extends Controller {
             ->orderBy('last_name')
             ->paginate();
         */
-        $users = User::select('users.*')
-            ->join('companies', 'companies.user_id', '=', 'users.id')
-            ->orderBy('companies.name')
+        $users = User::orderBy(
+                Company::select('name')
+                    ->whereColumn('user_id', 'users.id')
+                    ->orderBy('name')
+                    ->take(1)
+            )
             ->with('company')
             ->paginate();
 
