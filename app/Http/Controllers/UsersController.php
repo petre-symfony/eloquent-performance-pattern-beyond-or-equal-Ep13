@@ -28,9 +28,12 @@ class UsersController extends Controller {
             ->paginate();
          */
 
-        $users = User::select('users.*')
-            ->join('companies', 'companies.id', '=', 'users.company_id')
-            ->orderBy('companies.name')
+        $users = User::orderBy(
+                Company::select('name')
+                    ->whereColumn('id', 'users.company_id')
+                    ->orderBy('name')
+                    ->take(1)
+            )
             ->with('company')
             ->paginate();
 
