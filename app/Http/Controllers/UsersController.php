@@ -26,8 +26,13 @@ class UsersController extends Controller {
             ->orderBy('companies.name')
             ->with('company')
             ->paginate();
+         */
+
+        $users = User::orderBy('name')
+            ->with('company')
+            ->paginate();
 
         return view('users.index', ['users' => $users]);
-        */
+
     }
 }

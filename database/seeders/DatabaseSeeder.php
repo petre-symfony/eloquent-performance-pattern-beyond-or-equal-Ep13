@@ -27,9 +27,17 @@ class DatabaseSeeder extends Seeder {
 
         // User::factory(100000)->create(); Ep14
 
+        /**  Ep15
         User::factory(50000)->create()->each(fn ($user) =>
             Company::factory()->create([
                 'user_id' => $user->id
+            ])
+        );
+        */
+
+        Company::factory(10000)->create()->each(fn ($company) =>
+            User::factory(5)->create([
+                'company_id' => $company->id
             ])
         );
     }

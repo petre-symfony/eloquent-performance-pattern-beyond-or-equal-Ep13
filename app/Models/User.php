@@ -50,7 +50,13 @@ class User extends Authenticatable {
         return $this->hasMany(Customer::class, 'sales_rep_id');
     }
 
+    /** Ep 15
     public function company() {
         return $this->hasOne(Company::class);
+    }
+     */
+
+    public function company() {
+        return $this->belongsTo(Company::class);
     }
 }
