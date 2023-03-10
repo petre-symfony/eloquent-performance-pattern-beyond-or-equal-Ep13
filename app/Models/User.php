@@ -56,7 +56,9 @@ class User extends Authenticatable {
     }
      */
 
+    /** Ep16
     public function company() {
         return $this->belongsTo(Company::class);
     }
+    */
 }

@@ -20,19 +20,13 @@ class UsersController extends Controller {
             ->paginate();
         */
 
-        /** Ep15
+        /** Ep15, Ep16
         $users = User::select('users.*')
             ->join('companies', 'companies.user_id', '=', 'users.id')
             ->orderBy('companies.name')
             ->with('company')
             ->paginate();
          */
-
-        $users = User::select('users.*')
-            ->join('companies', 'companies.id', '=', 'users.company_id')
-            ->orderBy('companies.name')
-            ->with('company')
-            ->paginate();
 
         return view('users.index', ['users' => $users]);
 
