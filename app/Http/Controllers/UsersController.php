@@ -13,8 +13,13 @@ use App\Models\Customer;
 
 class UsersController extends Controller {
     public function index() {
+        /** Ep14
         $users = User::orderBy('first_name')
             ->orderBy('last_name')
+            ->paginate();
+        */
+        $users = User::orderBy('name')
+            ->with('company')
             ->paginate();
 
         return view('users.index', ['users' => $users]);

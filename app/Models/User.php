@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Customer;
+use App\Models\Company;
 
 class User extends Authenticatable {
     use HasApiTokens, HasFactory, Notifiable;
@@ -47,5 +48,9 @@ class User extends Authenticatable {
      */
     public function customer() {
         return $this->hasMany(Customer::class, 'sales_rep_id');
+    }
+
+    public function company() {
+        return $this->hasOne(Company::class);
     }
 }
