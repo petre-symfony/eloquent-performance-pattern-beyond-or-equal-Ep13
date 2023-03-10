@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [CustomersController::class, 'index']);
  */
 
-Route::get('/', [UsersController::class, 'index']);
+Route::get('/', [UsersController::class, 'index']); //Ep14
 
 Route::get('/dashboard', function () {
     return view('dashboard');

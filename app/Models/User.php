@@ -42,6 +42,9 @@ class User extends Authenticatable {
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Ep13
+     */
     public function customer() {
         return $this->hasMany(Customer::class, 'sales_rep_id');
     }
