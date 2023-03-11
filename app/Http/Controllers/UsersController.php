@@ -28,12 +28,7 @@ class UsersController extends Controller {
             ->with('company')
             ->paginate();
          */
-        $users = User::orderByDesc(
-                Login::select('created_at')
-                    ->whereColumn('user_id', 'users.id')
-                    ->latest()
-                    ->take(1)
-            )
+        $users = User::orderByLastLogin()
             ->withLastLogin()
             ->paginate();
 

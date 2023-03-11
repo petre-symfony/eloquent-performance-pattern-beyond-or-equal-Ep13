@@ -3,13 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Login;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Customer;
 use App\Models\Company;
-use App\Models\Login;
 
 class User extends Authenticatable {
     use HasApiTokens, HasFactory, Notifiable;
@@ -77,5 +77,14 @@ class User extends Authenticatable {
             ->latest()
             ->take(1),
         ])->with('lastLogin');
+    }
+
+    public function scopeorderByLastLogin($query){
+        $query->orderByDesc(
+            Login::select('created_at')
+            ->whereColumn('user_id', 'users.id')
+            ->latest()
+            ->take(1)
+        );
     }
 }
