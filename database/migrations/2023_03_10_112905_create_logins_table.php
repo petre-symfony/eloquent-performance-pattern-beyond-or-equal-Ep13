@@ -10,10 +10,12 @@ return new class extends Migration {
      */
     public function up(): void {
         Schema::create('logins', function (Blueprint $table) {
+            /** Ep17
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->string('ip_address', 50);
             $table->timestamps();
+             */
         });
     }
 
@@ -21,6 +23,9 @@ return new class extends Migration {
      * Reverse the migrations.
      */
     public function down(): void {
+        /** Ep17
         Schema::dropIfExists('logins');
+         *
+         */
     }
 };

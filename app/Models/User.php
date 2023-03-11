@@ -63,6 +63,7 @@ class User extends Authenticatable {
      * }
      */
 
+    /** Ep17
     public function logins() {
         return $this->hasMany(Login::class);
     }
@@ -87,4 +88,5 @@ class User extends Authenticatable {
             ->take(1)
         );
     }
+     */
 }

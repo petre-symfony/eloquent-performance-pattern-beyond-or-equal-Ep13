@@ -28,11 +28,13 @@ class UsersController extends Controller {
             ->with('company')
             ->paginate();
          */
+
+        /** Ep17
         $users = User::orderByLastLogin()
             ->withLastLogin()
             ->paginate();
 
         return view('users.index', ['users' => $users]);
-
+        */
     }
 }
