@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Company;
 use App\Models\Customer;
+use App\Models\Login;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -42,5 +43,11 @@ class DatabaseSeeder extends Seeder {
             ])
         );
          */
+
+        User::factory(60)->create()->each( fn ($user) =>
+            Login::factory(500)->create([
+                'user_id' => $user->id
+            ])
+        );
     }
 }

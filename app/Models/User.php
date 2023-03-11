@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Customer;
 use App\Models\Company;
+use App\Models\Login;
 
 class User extends Authenticatable {
     use HasApiTokens, HasFactory, Notifiable;
@@ -51,14 +52,30 @@ class User extends Authenticatable {
     }
 
     /** Ep 15
-    public function company() {
-        return $this->hasOne(Company::class);
-    }
+     * public function company() {
+     * return $this->hasOne(Company::class);
+     * }
      */
 
     /** Ep16
-    public function company() {
-        return $this->belongsTo(Company::class);
+     * public function company() {
+     * return $this->belongsTo(Company::class);
+     * }
+     */
+
+    public function logins() {
+        return $this->hasMany(Login::class);
     }
-    */
+
+    public function lastLogin() {
+        return $this->belongsTo(Login::class);
+    }
+
+    public function scopeWithLastLogin($query) {
+        $query->addSelect(['last_login_id' => Login::select('id')
+            ->whereColumn('user_id', 'users.id')
+            ->latest()
+            ->take(1),
+        ])->with('lastLogin');
+    }
 }
