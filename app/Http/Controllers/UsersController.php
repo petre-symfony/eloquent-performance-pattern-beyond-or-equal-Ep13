@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Company;
+use App\Models\Login;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,10 +28,12 @@ class UsersController extends Controller {
             ->with('company')
             ->paginate();
          */
-        $users = User::select('users.*')
-            ->join('logins', 'logins.user_id', '=', 'users.id')
-            ->orderByRaw('max(logins.created_at) desc')
-            ->groupBy('users.id')
+        $users = User::orderByDesc(
+                Login::select('created_at')
+                    ->whereColumn('user_id', 'users.id')
+                    ->latest()
+                    ->take(1)
+            )
             ->withLastLogin()
             ->paginate();
 
