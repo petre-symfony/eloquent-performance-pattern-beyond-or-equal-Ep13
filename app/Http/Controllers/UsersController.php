@@ -27,7 +27,9 @@ class UsersController extends Controller {
             ->with('company')
             ->paginate();
          */
-        $users = User::orderBy('name')
+        $users = User::select('users.*')
+            ->join('logins', 'logins.user_id', '=', 'users.id')
+            ->orderByDesc('logins.created_at')
             ->withLastLogin()
             ->paginate();
 
