@@ -30,6 +30,7 @@ class UsersController extends Controller {
         $users = User::select('users.*')
             ->join('logins', 'logins.user_id', '=', 'users.id')
             ->orderByDesc('logins.created_at')
+            ->groupBy('users.id')
             ->withLastLogin()
             ->paginate();
 
