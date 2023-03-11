@@ -29,7 +29,7 @@ class UsersController extends Controller {
          */
         $users = User::select('users.*')
             ->join('logins', 'logins.user_id', '=', 'users.id')
-            ->orderByDesc('logins.created_at')
+            ->orderByRaw('max(logins.created_at) desc')
             ->groupBy('users.id')
             ->withLastLogin()
             ->paginate();
