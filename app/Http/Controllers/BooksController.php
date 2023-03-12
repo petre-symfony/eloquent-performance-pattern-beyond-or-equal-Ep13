@@ -18,11 +18,13 @@ use App\Models\Customer;
 class BooksController extends Controller {
     public function index() {
         $books = Book::
-            orderByDesc(Checkout::select('borrowed_date')
-                ->whereColumn('book_id', 'books.id')
-                ->latest('borrowed_date')
-                ->take(1)
-            )
+            orderByDesc(function ($query) {
+                $query->select('borrowed_date')
+                    ->from('checkouts')
+                    ->whereColumn('book_id', 'books.id')
+                    ->latest('borrowed_date')
+                    ->take(1);
+            })
             ->withLastCheckout()
             ->with('lastCheckout.user')
             ->paginate();
