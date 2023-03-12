@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Book;
+use App\Models\Checkout;
 use App\Models\Company;
 use App\Models\Login;
 use Illuminate\Http\RedirectResponse;
@@ -16,10 +17,12 @@ use App\Models\Customer;
 
 class BooksController extends Controller {
     public function index() {
-        $books = Book::select('books.*')
-            ->join('checkouts', 'checkouts.book_id', '=', 'books.id')
-            ->groupBy('books.id')
-            ->orderByRaw('max(checkouts.borrowed_date) desc')
+        $books = Book::
+            orderByDesc(Checkout::select('borrowed_date')
+                ->whereColumn('book_id', 'books.id')
+                ->latest('borrowed_date')
+                ->take(1)
+            )
             ->withLastCheckout()
             ->with('lastCheckout.user')
             ->paginate();
