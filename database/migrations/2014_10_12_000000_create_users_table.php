@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->string('name');  //Ep13, Ep15
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('town')->nullable();
             $table->string('password');
             $table->rememberToken();
             // $table->boolean('is_owner')->default(false); Ep13

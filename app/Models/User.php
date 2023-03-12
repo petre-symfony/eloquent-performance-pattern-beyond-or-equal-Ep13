@@ -64,29 +64,35 @@ class User extends Authenticatable {
      */
 
     /** Ep17
-    public function logins() {
-        return $this->hasMany(Login::class);
-    }
-
-    public function lastLogin() {
-        return $this->belongsTo(Login::class);
-    }
-
-    public function scopeWithLastLogin($query) {
-        $query->addSelect(['last_login_id' => Login::select('id')
-            ->whereColumn('user_id', 'users.id')
-            ->latest()
-            ->take(1),
-        ])->with('lastLogin');
-    }
-
-    public function scopeorderByLastLogin($query){
-        $query->orderByDesc(
-            Login::select('created_at')
-            ->whereColumn('user_id', 'users.id')
-            ->latest()
-            ->take(1)
-        );
-    }
+     * public function logins() {
+     * return $this->hasMany(Login::class);
+     * }
+     *
+     * public function lastLogin() {
+     * return $this->belongsTo(Login::class);
+     * }
+     *
+     * public function scopeWithLastLogin($query) {
+     * $query->addSelect(['last_login_id' => Login::select('id')
+     * ->whereColumn('user_id', 'users.id')
+     * ->latest()
+     * ->take(1),
+     * ])->with('lastLogin');
+     * }
+     *
+     * public function scopeorderByLastLogin($query){
+     * $query->orderByDesc(
+     * Login::select('created_at')
+     * ->whereColumn('user_id', 'users.id')
+     * ->latest()
+     * ->take(1)
+     * );
+     * }
      */
+
+    public function books() {
+        return $this->belongsToMany(Book::class, 'checkouts')
+            ->using(Checkout::class)
+            ->withPivot('borrowed_date');
+    }
 }
