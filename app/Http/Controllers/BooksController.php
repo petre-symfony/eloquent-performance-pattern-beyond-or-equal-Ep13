@@ -16,7 +16,10 @@ use App\Models\Customer;
 
 class BooksController extends Controller {
     public function index() {
-        $books = Book::orderBy('name')
+        $books = Book::select('books.*')
+            ->join('checkouts', 'checkouts.book_id', '=', 'books.id')
+            ->groupBy('books.id')
+            ->orderByRaw('max(checkouts.borrowed_date) desc')
             ->withLastCheckout()
             ->with('lastCheckout.user')
             ->paginate();
