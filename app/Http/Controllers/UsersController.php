@@ -39,7 +39,9 @@ class UsersController extends Controller {
 
         $users = User::
             when(request('sort') === 'town', function ($query){
-                $query->orderBy('town', request('direction'));
+                $query
+                    ->orderByRaw('town is null')
+                    ->orderBy('town', request('direction'));
             })
             ->orderBy('name')
             ->paginate();
