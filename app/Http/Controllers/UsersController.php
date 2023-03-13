@@ -45,8 +45,7 @@ class UsersController extends Controller {
                         ->orderBy('town', request('direction'));
                 }
                 if (config('database.default') === 'pgsql') {
-                    $direction = strtolower(request('direction')) === 'asc' ? 'asc' : 'desc';
-                    $query->orderByRaw('town '.$direction.' nulls last');
+                    $query->orderByNullsLast('town', request('direction'));
                 }
             })
             ->orderBy('name')
