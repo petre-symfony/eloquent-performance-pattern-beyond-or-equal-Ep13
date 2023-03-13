@@ -13,10 +13,10 @@ return new class extends Migration {
             $table->id();
             //$table->string('first_name'); // Ep14
             // $table->string('last_name'); // Ep14
-            $table->string('name');  //Ep13, Ep15
+            $table->string('name');  //Ep13, Ep15, Ep16, Ep17, Ep18, Ep19
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('town')->nullable();
+            // $table->string('town')->nullable();  Ep19
             $table->string('password');
             $table->rememberToken();
             // $table->boolean('is_owner')->default(false); Ep13

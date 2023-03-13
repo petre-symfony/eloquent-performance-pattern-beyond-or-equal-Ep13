@@ -37,6 +37,7 @@ class UsersController extends Controller {
         return view('users.index', ['users' => $users]);
         */
 
+        /** Ep19
         $users = User::
             when(request('sort') === 'town', function ($query){
                 if (config('database.default') === 'mysql' || config('database.default') === 'sqlite') {
@@ -52,5 +53,6 @@ class UsersController extends Controller {
             ->paginate();
 
         return view('users.index', ['users' => $users]);
+         */
     }
 }

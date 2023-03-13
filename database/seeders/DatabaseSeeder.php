@@ -70,6 +70,7 @@ class DatabaseSeeder extends Seeder {
          * });
          */
 
+        /** Ep19
         $users = User::factory(500)->create();
 
         User::find(1)->update(['name' => 'Jonathan Reinink']);
@@ -80,6 +81,7 @@ class DatabaseSeeder extends Seeder {
         User::find(6)->update(['name' => 'Matt Stauffer']);
 
         $this->getBooks()->each(fn ($book) => Book::factory()->create($book));
+         */
     }
 
     /** Ep18
@@ -189,6 +191,7 @@ class DatabaseSeeder extends Seeder {
      * }
      */
 
+    /** Ep19
     protected function getBooks() {
         return collect([
             ['name' => 'The Pragmatic Programmer: From Journeyman to Master', 'author' => 'Andy Hunt', 'user_id' => 1],
@@ -293,4 +296,5 @@ class DatabaseSeeder extends Seeder {
             ['name' => 'Python Crash Course: A Hands-On, Project-Based Introduction to Programming', 'author' => 'Eric Matthes', 'user_id' => null],
         ]);
     }
+     */
 }

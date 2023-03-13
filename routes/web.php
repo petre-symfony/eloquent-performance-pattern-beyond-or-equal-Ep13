@@ -24,9 +24,12 @@ Route::get('/', [CustomersController::class, 'index']);
 Route::get('/', [UsersController::class, 'index']);
 */
 
-/** Ep18, Ep19 */
+/** Ep18, Ep19
 Route::get('/', [BooksController::class, 'index'])->name('books');
+ */
+/** Ep19
 Route::get('/users', [UsersController::class, 'index'])->name('users');
+ */
 
 Route::get('/dashboard', function () {
     return view('dashboard');

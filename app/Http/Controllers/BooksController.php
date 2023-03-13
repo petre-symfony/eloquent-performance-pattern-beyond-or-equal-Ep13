@@ -34,6 +34,7 @@ class BooksController extends Controller {
     }
      */
 
+    /** Ep19
     public function index(){
         $books = Book::with('user')
             ->orderByRaw('user_id is null')
@@ -42,4 +43,5 @@ class BooksController extends Controller {
 
         return view('books.index', ['books' => $books]);
     }
+     */
 }

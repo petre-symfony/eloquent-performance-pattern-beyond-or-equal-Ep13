@@ -17,10 +17,12 @@ class AppServiceProvider extends ServiceProvider {
      * Bootstrap any application services.
      */
     public function boot(): void {
+        /** Ep19
         Builder::macro('orderByNullsLast', function ($column, $direction='asc'){
             $column = $this->getGrammar()->wrap($column);
             $direction = strtolower($direction) === 'asc' ? 'asc' : 'desc';
             return $this->orderByRaw("$column $direction nulls last");
         });
+         */
     }
 }
