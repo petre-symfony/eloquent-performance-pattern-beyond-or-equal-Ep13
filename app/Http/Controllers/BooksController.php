@@ -16,6 +16,7 @@ use App\Models\User;
 use App\Models\Customer;
 
 class BooksController extends Controller {
+    /** Ep18
     public function index() {
         $books = Book::
             orderBy(User::select('name')
@@ -31,4 +32,5 @@ class BooksController extends Controller {
 
         return view('books.index', ['books' => $books]);
     }
+     */
 }

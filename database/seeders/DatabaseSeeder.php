@@ -54,7 +54,7 @@ class DatabaseSeeder extends Seeder {
          * );
          */
 
-
+        /** Ep18
         $users = User::factory(100)->create();
 
         $this->getBooks()->map(fn($book) => Book::factory()->create($book))
@@ -68,6 +68,7 @@ class DatabaseSeeder extends Seeder {
                         ]);
                     });
             });
+         */
     }
 
     protected function getBooks() {

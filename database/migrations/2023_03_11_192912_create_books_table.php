@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('last_checkout_id')->nullable()->constrained('checkouts');
+            //$table->foreignId('last_checkout_id')->nullable()->constrained('checkouts'); Ep18
             $table->string('author');
             $table->timestamps();
         });

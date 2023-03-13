@@ -90,9 +90,11 @@ class User extends Authenticatable {
      * }
      */
 
+    /** Ep18
     public function books() {
         return $this->belongsToMany(Book::class, 'checkouts')
             ->using(Checkout::class)
             ->withPivot('borrowed_date');
     }
+     */
 }

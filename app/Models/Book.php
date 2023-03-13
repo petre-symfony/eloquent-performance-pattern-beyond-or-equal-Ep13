@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model {
     use HasFactory;
 
+    /** Ep18
     public function user() {
         return $this->belongsToMany(User::class, 'checkouts')
             ->using(Checkout::class)
@@ -25,4 +26,5 @@ class Book extends Model {
             ->limit(1),
         ])->with('lastCheckout');
     }
+     */
 }
