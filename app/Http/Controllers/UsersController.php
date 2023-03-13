@@ -37,7 +37,11 @@ class UsersController extends Controller {
         return view('users.index', ['users' => $users]);
         */
 
-        $users = User::orderBy('name')
+        $users = User::
+            when(request('sort') === 'town', function ($query){
+                $query->orderBy('town', request('direction'));
+            })
+            ->orderBy('name')
             ->paginate();
 
         return view('users.index', ['users' => $users]);
