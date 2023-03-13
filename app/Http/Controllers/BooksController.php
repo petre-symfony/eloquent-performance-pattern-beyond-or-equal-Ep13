@@ -36,6 +36,7 @@ class BooksController extends Controller {
 
     public function index(){
         $books = Book::with('user')
+            ->orderByDesc('user_id')
             ->orderBy('name')
             ->paginate();
 
