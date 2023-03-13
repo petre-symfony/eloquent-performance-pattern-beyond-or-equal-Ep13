@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             //$table->foreignId('last_checkout_id')->nullable()->constrained('checkouts'); Ep18
+            $table->foreignId('user_id')->nullable()->constrained();
             $table->string('author');
             $table->timestamps();
         });

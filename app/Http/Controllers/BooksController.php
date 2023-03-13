@@ -33,4 +33,12 @@ class BooksController extends Controller {
         return view('books.index', ['books' => $books]);
     }
      */
+
+    public function index(){
+        $books = Book::with('user')
+            ->orderBy('name')
+            ->paginate();
+
+        return view('books.index', ['books' => $books]);
+    }
 }

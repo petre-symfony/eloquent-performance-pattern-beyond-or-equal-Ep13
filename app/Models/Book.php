@@ -27,4 +27,8 @@ class Book extends Model {
         ])->with('lastCheckout');
     }
      */
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

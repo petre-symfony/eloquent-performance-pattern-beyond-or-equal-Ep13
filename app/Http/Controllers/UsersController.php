@@ -36,5 +36,10 @@ class UsersController extends Controller {
 
         return view('users.index', ['users' => $users]);
         */
+
+        $users = User::orderBy('name')
+            ->paginate();
+
+        return view('users.index', ['users' => $users]);
     }
 }

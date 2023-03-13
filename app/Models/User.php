@@ -46,10 +46,11 @@ class User extends Authenticatable {
 
     /**
      * Ep13
-     */
+
     public function customer() {
         return $this->hasMany(Customer::class, 'sales_rep_id');
     }
+     */
 
     /** Ep 15
      * public function company() {
