@@ -30,7 +30,7 @@ class Feature extends Model {
     public function scopeOrderByActivity($query,$direction){
         # votes_count + comments_count*2
         $query->orderBy(
-            DB::raw('(votes_count + (comments_count * 2))'),
+            DB::raw('-(votes_count + (comments_count * 2))'),
             $direction
         );
     }
