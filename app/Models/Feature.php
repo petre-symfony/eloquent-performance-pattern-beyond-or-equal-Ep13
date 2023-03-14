@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Feature extends Model {
     use HasFactory;
@@ -17,6 +18,12 @@ class Feature extends Model {
     }
 
     public function scopeOrderByStatus($query, $direction){
-        $query->orderBy('status', $direction);
+        $query->orderBy(DB::raw('
+            case
+                when status = "Requested" then 1
+                when status = "Approved" then 2
+                when status = "Completed" then 3
+            end
+        '), $direction);
     }
 }
