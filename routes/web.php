@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\FeaturesController;
 use App\Http\Controllers\BooksController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,8 @@ Route::get('/', [BooksController::class, 'index'])->name('books');
 /** Ep19
 Route::get('/users', [UsersController::class, 'index'])->name('users');
  */
+
+Route::get('/', [FeaturesController::class, 'index'])->name('features');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

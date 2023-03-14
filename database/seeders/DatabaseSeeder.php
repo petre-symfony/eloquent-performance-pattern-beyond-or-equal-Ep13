@@ -4,11 +4,14 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Book;
+use App\Models\Comment;
 use App\Models\Company;
 use App\Models\Customer;
+use App\Models\Feature;
 use App\Models\Login;
 use App\Models\Checkout;
 use App\Models\User;
+use App\Models\Vote;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder {
@@ -82,6 +85,18 @@ class DatabaseSeeder extends Seeder {
 
         $this->getBooks()->each(fn ($book) => Book::factory()->create($book));
          */
+
+        $users = User::factory(250)->create();
+
+        Feature::factory(60)->create()->each(function ($feature) use ($users) {
+            Comment::factory(rand(1, 50))->existing()->create([
+                'feature_id' => $feature->id
+            ]);
+
+            Vote::factory(rand(0, 250))->existing()->create([
+                'feature_id' => $feature->id
+            ]);
+        });
     }
 
     /** Ep18
