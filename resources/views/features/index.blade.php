@@ -103,11 +103,11 @@
                                             <svg class="fill-current w-3 h-3 mt-2px" viewBox="0 0 40 40" width="40" height="40"><title>Exported from Streamline App (https://app.streamlineicons.com)</title><g transform="matrix(1.6666666666666667,0,0,1.6666666666666667,0,0)"><path d="M21.5,2h-19C1.672,2,1,2.672,1,3.5v13C1,17.328,1.672,18,2.5,18h4.252c0.138,0,0.25,0.112,0.25,0.25v3.25 c0,0.276,0.224,0.5,0.5,0.5c0.132,0,0.259-0.052,0.353-0.146l3.781-3.781C11.683,18.026,11.747,18,11.813,18H21.5 c0.828,0,1.5-0.672,1.5-1.5v-13C23,2.672,22.328,2,21.5,2z" stroke="none" stroke-width="0" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
                                             <div class="ml-1 font-medium">{{ $feature->comments_count }}</div>
                                         </div>
-                                        {{--
+
                                         <div class="ml-2">
                                           ({{ $feature->votes_count + ($feature->comments_count * 2) }})
                                         </div>
-                                        --}}
+                                        
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
